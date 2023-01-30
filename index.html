@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+        section {
+            background-color: rgb(11, 20, 26);
+            width: 320px;
+            height: fit-content;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            margin: 40px;
+            margin: auto;
+            
+        }
+
+        input {
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            width: 200px;
+            background-color: white;
+            margin: 5px;
+        }
+
+        .but {
+            padding: 10px;
+            width: 70px;
+            border-radius: 10px;
+            background-color: rgb(44, 102, 236);
+            color: white;
+            font-weight: bold;
+        }
+
+        .oneinit {
+            background-color: rgb(0, 92, 75);
+            padding: 5px;
+            border-radius: 10px 0px 10px 10px;
+            margin: 5px;
+            width: fit-content;
+            align-self: flex-end;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+
+        .oneinit1 {
+            background-color: rgb(32, 44, 51);
+            padding: 5px;
+            border-radius: 0px 10px 10px 10px;
+            margin: 5px;
+            width: fit-content;
+            align-self: flex-start;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .text {
+            margin: 5px;
+            overflow-wrap: break-word;
+            
+            max-width: 200px;
+            height: fit-content;
+
+        }
+
+        .show {
+            display: flex;
+            flex-direction: column;
+           
+            width: 100%;
+        }
+        .chat{
+            text-align: center;
+        }
+        .time{
+            font-size: small;
+
+        }
+        .delete{
+            padding: 10px;
+            width: fit-content;
+            border-radius: 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <section>
+            <p class="chat">Chat</p>
+            <p id="show" class="show"></p>
+
+
+            <div>
+                <input type="text" placeholder="first person" id="input">
+                <button class="but" onclick="send()">click</button>
+
+            </div>
+            <div>
+                <input type="text" placeholder="second person" id="input2">
+
+                <button class="but" onclick="send2()">click2</button>
+            </div>
+
+
+        </section>
+    </main>
+
+</body>
+
+</html>
+
+<script>
+
+    let show = document.getElementById("show")
+    let time = document.getElementById("time")
+    let input = document.getElementById("input")
+    let time2 = document.getElementById("time2")
+    let input2 = document.getElementById("input2")
+
+
+
+    function send() {
+        if (input.value=="") {
+            alert("enter message")
+        } else {
+            let abdullahi = new Date()
+        console.log(abdullahi.getHours() + ":" + abdullahi.getMinutes())
+
+
+
+        console.log(input.value);
+        show.innerHTML += `<div class="oneinit">
+           
+                <div class="text"> ${input.value}</div>
+                    
+                <p class='time' id="time">
+                ${abdullahi.getHours() + ":" + abdullahi.getMinutes() }
+                </p> 
+                <button class="delete">
+                    del
+                </button>
+            
+            </div>`
+            input.value="";
+
+            var current_tasks = document.querySelectorAll(".delete");
+        for(var i=0; i<current_tasks.length; i++){
+            current_tasks[i].onclick = function(){
+                this.parentNode.remove();
+            }
+        }
+        }
+
+    }
+
+
+    function send2() {
+        if(input2.value=="") {
+            alert("enter message")
+        } else {
+            let abdullahi = new Date()
+        console.log(abdullahi.getHours() + ":" + abdullahi.getMinutes() )
+
+
+
+        show.innerHTML += `<div class="oneinit1">
+           
+                <div class="text"> ${input2.value}</div>
+                <p class='time' id="time2">
+                ${abdullahi.getHours() + ":" + abdullahi.getMinutes()}
+                </p>
+                <button class="delete">
+                   del
+                </button>
+            </div>`
+            input2.value="";
+
+          
+
+        var current_tasks = document.querySelectorAll(".delete");
+        for(var i=0; i<current_tasks.length; i++){
+            current_tasks[i].onclick = function(){
+                this.parentNode.remove();
+            }
+        }
+        }
+    }
+
+</script>
